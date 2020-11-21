@@ -1,0 +1,6 @@
+Substitua os arquivos da pasta public por esses.
+
+Em wp-config.php - altere a chave passada na linha 66 do código.
+
+Acesse: https://api.wordpress.org/secret-key/1.1/salt/
+Para gerar uma nova chave e copie a opção "NONCE_SALT".
