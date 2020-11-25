@@ -24,7 +24,7 @@ function api_photo_post($request) {
     $files = $request->get_file_params();
 
     // Testa se algum dos campos foi vazio.
-    if (empty($nome) || empty($peso) || empty($idade) || $files) {
+    if (empty($nome) || empty($peso) || empty($idade) || empty($files)) {
         // Cria um novo Objeto de Erro e retorna ele como resposta da requisição.
         $response = new WP_Error("error", "Dados incompletos", ["status" => 422]);
         // Retorna os dados no formato de "response" de REST API.
