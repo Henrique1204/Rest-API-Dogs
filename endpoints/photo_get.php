@@ -100,16 +100,15 @@ function api_photos_get($request) {
     // Argumentos para serem usados na busca dos posts.
     $args = [
         "post_type" => "post",
-        "author" => $_user,
+        "author" => 0,
         "posts_per_page" => $_total,
-        "pages" => $_page
+        "paged" => $_page
     ];
 
     // Busca dos posts.
     $query = new WP_Query($args);
     // Posts.
     $posts = $query->posts;
-
     $photos = [];
 
     // Verifica se existe posts.
@@ -120,7 +119,7 @@ function api_photos_get($request) {
     }
 
     // Retorna os dados no formato de "response" de REST API.
-    return rest_ensure_response($response);
+    return rest_ensure_response($photos);
 }
 
 // Função para registrar o endpoint da API.
@@ -135,4 +134,4 @@ function register_api_photos_get() {
 }
 
 // Faz com que a função de registro ocorra na hora em que a api inicia.
-add_action('rest_api_init', 'register_api_photo_get');
+add_action('rest_api_init', 'register_api_photos_get');
